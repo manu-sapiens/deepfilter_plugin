@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+if [ -d "./venv" ]; then
+
+	source ./venv/bin/activate
+	python -m ensurepip --upgrade
+	python -m pip install --upgrade "pip>=22.3.1,<23.1.*"
+	python -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
+	pip install torch torchaudio -f https://download.pytorch.org/whl/cpu/torch_stable.html
+	python -m pip install sox==1.4.1
+	python -m pip install -r requirements.txt
+
+	git clone https://github.com/Rikorose/DeepFilterNet.git
+	pushd DeepFilterNet
+	cd DeepFilterNet
+	python -m pip install .
+	popd
+	echo "DONE"
+fi
+
