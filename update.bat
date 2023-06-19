@@ -16,4 +16,3 @@ if exist ".\venv" (
 	python -m pip install .
 	popd
 )
-pause
